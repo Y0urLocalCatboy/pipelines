@@ -22,5 +22,47 @@ public class HRCalculatorTest {
                 () -> HRCalculator.calculateMaxHR(-1));
     }
 
+    @Test
+    public void testWorkoutZone_Resting() {
+        var result = HRCalculator.getWorkoutZone(40, 100);
+        assertEquals("Resting", result);
+    }
+
+    @Test
+    public void testWorkoutZone_WarmUp() {
+        var result = HRCalculator.getWorkoutZone(40, 120);
+        assertEquals("Warm-up", result);
+    }
+
+    @Test
+    public void testWorkoutZone_FatBurn() {
+        var result = HRCalculator.getWorkoutZone(40, 135);
+        assertEquals("Fat Burn", result);
+    }
+
+    @Test
+    public void testWorkoutZone_Aerobic() {
+        var result = HRCalculator.getWorkoutZone(40, 153);
+        assertEquals("Aerobic", result);
+    }
+
+    @Test
+    public void testWorkoutZone_Anaerobic() {
+        var result = HRCalculator.getWorkoutZone(40, 170);
+        assertEquals("Anaerobic", result);
+    }
+
+    @Test
+    public void testWorkoutZone_Maximum() {
+        var result = HRCalculator.getWorkoutZone(40, 185);
+        assertEquals("Maximum", result);
+    }
+
+    @Test
+    public void testWorkoutZone_BoundaryAt60Percent() {
+        var result = HRCalculator.getWorkoutZone(40, 108);
+        assertEquals("Warm-up", result);
+    }
+
 }
 
